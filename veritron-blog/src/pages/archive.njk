@@ -1,0 +1,19 @@
+---
+layout: layouts/page.njk
+permalink: /archive/
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ t.archive }}"
+  lead: "{{ t.allPosts }} — {{ collections.posts.length | num }}"
+---
+{% for y in collections.archive %}
+<h2 class="archive__year">{{ (y.year ~ '-06-15') | dateYear }} <small>{{ t.postCount | fmt({ n: y.count | num }) }}</small></h2>
+{% for m in y.months %}
+<h3 class="archive__month">{{ m.month | monthName }}</h3>
+<ul class="archive-list">
+  {%- for post in m.posts %}
+  <li><time datetime="{{ post.date | dateYMD }}">{{ post.date | dateDay }}</time><span><a href="{{ post.url }}">{{ post.data.title }}</a>{% if post.data.catLabel %}<a class="chip chip--plain" href="/category/{{ post.data.catSlug }}/">{{ post.data.catLabel }}</a>{% endif %}</span></li>
+  {%- endfor %}
+</ul>
+{% endfor %}
+{% endfor %}

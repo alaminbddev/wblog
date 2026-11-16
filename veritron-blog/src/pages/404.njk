@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+permalink: /404.html
+noindex: true
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ t.notFoundTitle }}"
+---
+<div class="error-page container">
+  <p class="error-page__code" aria-hidden="true">404</p>
+  <h1>{{ t.notFoundTitle }}</h1>
+  <p>{{ t.notFoundText }}</p>
+  <div class="hero__actions">
+    <a class="btn btn--primary" href="/">{{ t.goHome }}</a>
+    <a class="btn js-only" href="/blog/" data-random-post>{{ t.randomPost }}</a>
+    <button type="button" class="btn js-only" data-search-open>{{ t.search }}</button>
+  </div>
+</div>

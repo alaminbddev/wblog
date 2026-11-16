@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+---
+<div class="page container">
+  <header class="page-head">
+    {%- if eyebrow %}<p class="page-head__eyebrow">{{ eyebrow }}</p>{% endif %}
+    <h1 class="page-head__title">{{ title }}</h1>
+    {%- if lead %}<p class="page-head__desc">{{ lead }}</p>{% endif %}
+  </header>
+  <div class="prose prose--page" data-post-body>
+    {{ content | safe }}
+  </div>
+</div>

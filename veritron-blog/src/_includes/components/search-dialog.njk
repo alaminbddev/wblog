@@ -1,0 +1,15 @@
+{% from "components/icons.njk" import icon %}
+{% if site.features.search %}
+<dialog class="search js-only" data-search-dialog aria-label="{{ t.search }}">
+  <div class="search__box">
+    <div class="search__bar">
+      {{ icon("search") }}
+      <input type="search" class="search__input" data-search-input placeholder="{{ t.searchPlaceholder }}" aria-label="{{ t.search }}" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" role="combobox" aria-expanded="true" aria-controls="search-results" aria-autocomplete="list">
+      <button type="button" class="search__close" data-search-close aria-label="{{ t.searchClose }}">Esc</button>
+    </div>
+    <div class="search__status" data-search-status role="status" aria-live="polite"></div>
+    <ul class="search__results" id="search-results" data-search-results role="listbox" aria-label="{{ t.search }}"></ul>
+    <p class="search__hint">{{ t.searchHint }}</p>
+  </div>
+</dialog>
+{% endif %}

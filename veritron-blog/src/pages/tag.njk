@@ -1,0 +1,12 @@
+---
+layout: layouts/list.njk
+pagination:
+  data: collections.tagPages
+  size: 1
+  alias: pg
+permalink: "{{ pg.url }}"
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "#{{ pg.label }}{% if pg.n > 1 %} — {{ t.pageOf | fmt({ n: pg.n | num, total: pg.total | num }) }}{% endif %}"
+  description: "{{ t.postCount | fmt({ n: pg.count | num }) }} — #{{ pg.label }}"
+---

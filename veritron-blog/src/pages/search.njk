@@ -1,0 +1,12 @@
+---
+layout: layouts/page.njk
+permalink: /search/
+noindex: true
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ t.search }}"
+  lead: "{{ t.searchPlaceholder }}"
+---
+<p class="js-only"><button type="button" class="btn btn--primary" data-search-open>{{ t.search }}</button></p>
+<noscript><p>{{ t.needsJs }}</p></noscript>
+<p><a href="/archive/">{{ t.archive }}</a> · <a href="/tags/">{{ t.topics }}</a></p>

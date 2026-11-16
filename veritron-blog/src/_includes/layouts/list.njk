@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+---
+<div class="page container">
+  <header class="page-head">
+    {%- if pg.kind == "category" %}<p class="page-head__eyebrow">{{ t.inCategory }}</p>{% endif %}
+    <h1 class="page-head__title">{{ heading or title }}</h1>
+    {%- if pg.description %}<p class="page-head__desc">{{ pg.description }}</p>{% endif %}
+    <p class="page-head__meta">
+      <span>{{ t.postCount | fmt({ n: pg.count | num }) }}</span>
+      {%- if pg.kind == "category" %}<a href="{{ pg.feedUrl }}">{{ t.rss }}</a>{% endif %}
+      {%- if pg.kind != "blog" %}<a href="/blog/">{{ t.allPosts }}</a>{% endif %}
+    </p>
+  </header>
+  {%- if pg.posts.length %}
+  <div class="card-grid">
+    {%- for post in pg.posts %}{% include "components/card.njk" %}{% endfor %}
+  </div>
+  {%- else %}<p class="muted">{{ t.noPosts }}</p>{% endif %}
+  {%- if pg.total > 1 %}
+  <nav class="pagination" aria-label="{{ t.pagination }}">
+    {%- if pg.n > 1 %}<a class="btn" rel="prev" href="{{ pg.baseUrl if pg.n == 2 else (pg.baseUrl + 'page/' + (pg.n - 1) + '/') }}">{{ t.prevPage }}</a>{% else %}<span class="btn" aria-disabled="true">{{ t.prevPage }}</span>{% endif %}
+    <span class="pagination__info">{{ t.pageOf | fmt({ n: pg.n | num, total: pg.total | num }) }}</span>
+    {%- if pg.n < pg.total %}<a class="btn" rel="next" href="{{ pg.baseUrl }}page/{{ pg.n + 1 }}/">{{ t.nextPage }}</a>{% else %}<span class="btn" aria-disabled="true">{{ t.nextPage }}</span>{% endif %}
+  </nav>
+  {%- endif %}
+</div>

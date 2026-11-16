@@ -1,0 +1,139 @@
+---
+layout: layouts/base.njk
+---
+{% from "components/icons.njk" import icon %}
+{% set tocItems = content | toc %}
+{% set showToc = site.features.toc and tocItems.length >= 3 %}
+{% set me = { url: page.url, data: { tagItems: tagItems, catSlug: catSlug, series: series } } %}
+{% set relatedPosts = collections.posts | related(me, 3) %}
+{% set nb = collections.posts | adjacent(page.url) %}
+{% set seriesList = collections.seriesMap[0] | seriesPosts(series) %}
+{% set pageUrl = site.url + page.url %}
+{% set su = pageUrl | urlencode %}
+{% set st = title | urlencode %}
+<article class="post container" itemscope itemtype="https://schema.org/BlogPosting">
+  <header class="post__header">
+    <nav class="crumbs" aria-label="{{ t.breadcrumbs }}">
+      <ol>
+        <li><a href="/">{{ t.home }}</a></li>
+        <li><a href="{{ ('/category/' + catSlug + '/') if catSlug else '/blog/' }}">{{ catLabel or t.blog }}</a></li>
+        <li><span aria-current="page">{{ title }}</span></li>
+      </ol>
+    </nav>
+    {%- if catLabel %}<a class="chip" href="/category/{{ catSlug }}/">{{ catLabel }}</a>{% endif %}
+    <h1 class="post__title" itemprop="headline">{{ title }}</h1>
+    {%- if subtitle %}<p class="post__subtitle">{{ subtitle }}</p>{% endif %}
+    <div class="post__meta">
+      <span>{{ t.by }} <strong>{{ author }}</strong></span>
+      <time datetime="{{ date | dateYMD }}" itemprop="datePublished">{{ date | dateLong }}</time>
+      {%- if updated %}<span>{{ t.updated }}: <time datetime="{{ updated | dateYMD }}" itemprop="dateModified">{{ updated | dateLong }}</time></span>{% endif %}
+      <span>{{ t.readingTime | fmt({ n: minutes | num }) }}</span>
+    </div>
+    <div class="post__actions">
+      {%- if site.features.savedPosts %}
+      <button type="button" class="btn js-only" data-save data-url="{{ page.url }}" data-title="{{ title }}" aria-pressed="false">{{ icon("bookmark") }}<span data-save-label>{{ t.save }}</span></button>
+      {%- endif %}
+      {%- if site.features.textSize %}
+      <span class="btn js-only" role="group" aria-label="{{ t.textSize }}">
+        <button type="button" class="link-btn" data-textsize="down" aria-label="{{ t.smaller }}">A−</button>
+        <button type="button" class="link-btn" data-textsize="reset" aria-label="{{ t.reset }}">A</button>
+        <button type="button" class="link-btn" data-textsize="up" aria-label="{{ t.larger }}">A+</button>
+      </span>
+      {%- endif %}
+    </div>
+  </header>
+
+  {%- if image %}
+  <figure class="post__hero">
+    <img class="post__hero-img" src="{{ image }}" alt="{{ heroAlt }}" width="1200" height="675" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" itemprop="image">
+    {%- if imageCaption %}<figcaption>{{ imageCaption }}</figcaption>{% endif %}
+  </figure>
+  {%- endif %}
+
+  <div class="post__layout">
+    {%- if showToc %}
+    <aside class="post__aside post__aside--toc" aria-label="{{ t.toc }}">
+      <div class="post__aside-sticky">
+        <nav class="toc" data-toc>
+          <p class="toc__title">{{ t.toc }}</p>
+          <ol class="toc__list">
+            {%- for h in tocItems %}<li class="toc__l{{ h.level }}"><a href="#{{ h.id }}">{{ h.text }}</a></li>{% endfor %}
+          </ol>
+        </nav>
+      </div>
+    </aside>
+    {%- endif %}
+
+    <div class="post__main">
+      {%- if showToc %}
+      <details class="toc--mobile">
+        <summary>{{ t.toc }}</summary>
+        <nav class="toc"><ol class="toc__list">
+          {%- for h in tocItems %}<li class="toc__l{{ h.level }}"><a href="#{{ h.id }}">{{ h.text }}</a></li>{% endfor %}
+        </ol></nav>
+      </details>
+      {%- endif %}
+      <div class="prose" data-post-body itemprop="articleBody">
+        {{ content | safe }}
+      </div>
+    </div>
+  </div>
+
+  <footer class="post__footer">
+    {%- if tagItems.length %}
+    <ul class="tags">
+      {%- for tg in tagItems %}<li><a class="chip chip--plain" href="/tag/{{ tg.slug }}/">#{{ tg.name }}</a></li>{% endfor %}
+    </ul>
+    {%- endif %}
+
+    {%- if site.features.share %}
+    <div class="share">
+      <span class="share__label">{{ t.share }}</span>
+      <button type="button" class="icon-btn js-only" data-share-native data-title="{{ title }}" data-url="{{ pageUrl }}" aria-label="{{ t.shareNative }}" hidden>{{ icon("share") }}</button>
+      <a class="icon-btn" href="https://wa.me/?text={{ st }}%20{{ su }}" target="_blank" rel="noopener noreferrer" aria-label="{{ t.shareOn | fmt({ site: 'WhatsApp' }) }}">{{ icon("chat") }}</a>
+      <a class="icon-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ su }}" target="_blank" rel="noopener noreferrer" aria-label="{{ t.shareOn | fmt({ site: 'Facebook' }) }}">{{ icon("facebook") }}</a>
+      <a class="icon-btn" href="https://x.com/intent/post?text={{ st }}&amp;url={{ su }}" target="_blank" rel="noopener noreferrer" aria-label="{{ t.shareOn | fmt({ site: 'X' }) }}">{{ icon("x") }}</a>
+      <a class="icon-btn" href="https://t.me/share/url?url={{ su }}&amp;text={{ st }}" target="_blank" rel="noopener noreferrer" aria-label="{{ t.shareOn | fmt({ site: 'Telegram' }) }}">{{ icon("send") }}</a>
+      <a class="icon-btn" href="mailto:?subject={{ st }}&amp;body={{ su }}" aria-label="{{ t.shareOn | fmt({ site: 'Email' }) }}">{{ icon("mail") }}</a>
+      <button type="button" class="icon-btn js-only" data-copy-link data-url="{{ pageUrl }}" aria-label="{{ t.copyLink }}" title="{{ t.copyLink }}">{{ icon("link") }}</button>
+    </div>
+    {%- endif %}
+
+    {%- if seriesList.length > 1 %}
+    <aside class="series" aria-label="{{ t.series }}">
+      <p class="series__title">{{ t.series }}: {{ series }}</p>
+      <ol>
+        {%- for sp in seriesList %}<li>{% if sp.url == page.url %}<span aria-current="page">{{ sp.data.title }}</span>{% else %}<a href="{{ sp.url }}">{{ sp.data.title }}</a>{% endif %}</li>{% endfor %}
+      </ol>
+    </aside>
+    {%- endif %}
+
+    <aside class="author-box" aria-label="{{ t.authorBox }}">
+      {%- if site.author.avatar %}<img class="author-box__avatar" src="{{ site.author.avatar }}" alt="" width="56" height="56" loading="lazy" decoding="async">{% endif %}
+      <div><p class="author-box__name">{{ site.author.name }}</p><p class="author-box__bio">{{ site.author.bio }}</p></div>
+    </aside>
+
+    {%- if nb.newer or nb.older %}
+    <nav class="pager" aria-label="{{ t.pagination }}">
+      {%- if nb.older %}<a href="{{ nb.older.url }}" rel="prev"><small>← {{ t.older }}</small><span class="pager__title">{{ nb.older.data.title }}</span></a>{% else %}<span></span>{% endif %}
+      {%- if nb.newer %}<a class="pager__next" href="{{ nb.newer.url }}" rel="next"><small>{{ t.newer }} →</small><span class="pager__title">{{ nb.newer.data.title }}</span></a>{% endif %}
+    </nav>
+    {%- endif %}
+
+    {%- if site.features.relatedPosts and relatedPosts.length %}
+    <section class="related" aria-labelledby="related-h">
+      <h2 id="related-h">{{ t.related }}</h2>
+      <ul class="related-list">
+        {%- for rp in relatedPosts %}<li><a href="{{ rp.url }}">{{ rp.data.title }}</a><time datetime="{{ rp.date | dateYMD }}">{{ rp.date | dateShort }}</time></li>{% endfor %}
+      </ul>
+    </section>
+    {%- endif %}
+  </footer>
+
+  {%- if site.comments.provider == "giscus" and comments != false %}
+  <section class="comments" aria-labelledby="comments-h">
+    <h2 id="comments-h">{{ t.comments }}</h2>
+    <div data-comments><noscript>{{ t.commentsNeedJs }}</noscript></div>
+  </section>
+  {%- endif %}
+</article>

@@ -1,0 +1,13 @@
+---
+layout: layouts/page.njk
+permalink: /saved/
+noindex: true
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ t.savedTitle }}"
+  lead: "{{ t.savedLead }}"
+---
+<noscript><p>{{ t.needsJs }}</p></noscript>
+<p data-saved-empty hidden>{{ t.savedEmpty }}</p>
+<ul class="saved-list" data-saved-list></ul>
+<button type="button" class="btn js-only" data-saved-clear hidden>{{ t.savedClear }}</button>

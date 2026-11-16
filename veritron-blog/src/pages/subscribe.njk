@@ -1,0 +1,18 @@
+---
+layout: layouts/page.njk
+permalink: /subscribe/
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ t.subscribeTitle }}"
+  lead: "{{ t.subscribeLead }}"
+---
+<p>{{ t.subscribeHow }}</p>
+<ul class="feed-list">
+  <li><a href="/feed.xml">{{ t.rss }}</a> — <code>{{ site.url }}/feed.xml</code></li>
+  <li><a href="/feed.json">{{ t.jsonFeed }}</a> — <code>{{ site.url }}/feed.json</code></li>
+</ul>
+<h2>{{ t.subscribeCategory }}</h2>
+<ul class="feed-list">
+  {%- for c in collections.categories %}<li><a href="{{ c.feedUrl }}">{{ c.label }}</a> — <code>{{ site.url }}{{ c.feedUrl }}</code></li>{% endfor %}
+</ul>
+<p>{{ t.subscribeEmail }}</p>

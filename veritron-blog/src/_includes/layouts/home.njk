@@ -1,0 +1,68 @@
+---
+layout: layouts/base.njk
+---
+{% set featured = collections.featuredPosts %}
+{% set lead = featured[0] if featured.length else collections.posts[0] %}
+<section class="hero container">
+  <p class="hero__eyebrow">{{ site.author.name }}</p>
+  <h1 class="hero__title">{{ site.tagline }}</h1>
+  <p class="hero__lead">{{ site.author.bio }}</p>
+  <div class="hero__actions">
+    <a class="btn btn--primary" href="/blog/">{{ t.allPosts }}</a>
+    <a class="btn" href="/subscribe/">{{ t.subscribe }}</a>
+  </div>
+</section>
+
+{% if lead %}
+<section class="section container" aria-labelledby="featured-h">
+  <div class="section__head"><h2 class="section__title" id="featured-h">{{ t.featured }}</h2></div>
+  <article class="lead-card">
+    {%- if lead.data.image %}
+    <div class="lead-card__media"><img src="{{ lead.data.image }}" alt="" width="1200" height="675" fetchpriority="high" decoding="async" referrerpolicy="no-referrer"></div>
+    {%- endif %}
+    <div class="lead-card__body">
+      {%- if lead.data.catLabel %}<a class="chip" href="/category/{{ lead.data.catSlug }}/">{{ lead.data.catLabel }}</a>{% endif %}
+      <h3 class="lead-card__title"><a href="{{ lead.url }}">{{ lead.data.title }}</a></h3>
+      <p class="lead-card__excerpt">{{ lead.data.descriptionText }}</p>
+      <div class="card__meta"><time datetime="{{ lead.date | dateYMD }}">{{ lead.date | dateLong }}</time><span>{{ t.readingTime | fmt({ n: lead.data.minutes | num }) }}</span></div>
+    </div>
+  </article>
+</section>
+{% endif %}
+
+<section class="section container" aria-labelledby="latest-h">
+  <div class="section__head">
+    <h2 class="section__title" id="latest-h">{{ t.latest }}</h2>
+    <a class="section__more" href="/blog/">{{ t.allPosts }} →</a>
+  </div>
+  <div class="card-grid">
+    {%- for post in collections.posts | limit(site.homeLatestCount + 1) %}
+      {%- if not lead or post.url != lead.url %}
+        {% include "components/card.njk" %}
+      {%- endif %}
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="section container" aria-labelledby="topics-h">
+  <div class="section__head">
+    <h2 class="section__title" id="topics-h">{{ t.browseTopics }}</h2>
+    <a class="section__more" href="/tags/">{{ t.allTopics }} →</a>
+  </div>
+  <ul class="topic-cloud">
+    {%- for c in collections.categories %}
+    <li><a href="{{ c.url }}">{{ c.label }} <small>{{ c.count | num }}</small></a></li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="section container">
+  <div class="cta">
+    <h2>{{ t.subscribeTitle }}</h2>
+    <p>{{ t.subscribeLead }}</p>
+    <div class="cta__actions">
+      <a class="btn btn--primary" href="/subscribe/">{{ t.subscribe }}</a>
+      <a class="btn" href="/feed.xml">{{ t.rss }}</a>
+    </div>
+  </div>
+</section>

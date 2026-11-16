@@ -1,0 +1,18 @@
+---
+layout: layouts/page.njk
+permalink: /contact/
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ t.contact }}"
+  lead: "প্রশ্ন, মতামত বা সংশোধনী—সরাসরি ইমেইল করুন।"
+---
+{% set em = site.email | obfuscateEmail %}
+<p>
+  <a class="btn btn--primary" href="#" data-eu="{{ em.u }}" data-ed="{{ em.d }}">{{ t.emailMe }}</a>
+  <noscript><span>{{ em.text }}</span></noscript>
+</p>
+<p class="muted">স্প্যাম ঠেকাতে ঠিকানাটি পাতায় সরাসরি লেখা নেই; বাটনে চাপলে আপনার ইমেইল অ্যাপ খুলবে।</p>
+<h2>সংশোধনী পাঠানো</h2>
+<p>কোনো লেখায় ভুল চোখে পড়লে লেখার লিংকসহ জানান। যাচাই করে সংশোধন করব এবং লেখায় হালনাগাদের তারিখ যোগ করব।</p>
+<h2>নিরাপত্তা</h2>
+<p>এই সাইটে কোনো নিরাপত্তা-ত্রুটি পেলে <a href="/.well-known/security.txt">security.txt</a>-এ দেওয়া তথ্য অনুযায়ী জানান।</p>

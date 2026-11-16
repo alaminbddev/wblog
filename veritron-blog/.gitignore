@@ -1,0 +1,16 @@
+# build output
+_site/
+.cache/
+# dependencies
+node_modules/
+# secrets — NEVER commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+serviceAccount*.json
+.firebase/
+# misc
+.DS_Store
+*.log

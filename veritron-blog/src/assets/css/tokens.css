@@ -1,0 +1,81 @@
+/* Self-hosted Tiro Bangla (SIL OFL). unicode-range keeps downloads to what the page uses. */
+@font-face { font-family: "Tiro Bangla"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/tiro-bangla-bengali-400-normal.woff2") format("woff2");
+  unicode-range: U+0951-0952,U+0964-0965,U+0980-09FE,U+1CD0,U+1CD2,U+1CD5-1CD6,U+1CD8,U+1CE1,U+1CEA,U+1CED,U+1CF2,U+1CF5-1CF7,U+200C-200D,U+20B9,U+25CC,U+A8F1; }
+@font-face { font-family: "Tiro Bangla"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/tiro-bangla-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "Tiro Bangla"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/tiro-bangla-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Tiro Bangla"; font-style: italic; font-weight: 400; font-display: swap;
+  src: url("../fonts/tiro-bangla-bengali-400-italic.woff2") format("woff2");
+  unicode-range: U+0951-0952,U+0964-0965,U+0980-09FE,U+1CD0,U+1CD2,U+1CD5-1CD6,U+1CD8,U+1CE1,U+1CEA,U+1CED,U+1CF2,U+1CF5-1CF7,U+200C-200D,U+20B9,U+25CC,U+A8F1; }
+@font-face { font-family: "Tiro Bangla"; font-style: italic; font-weight: 400; font-display: swap;
+  src: url("../fonts/tiro-bangla-latin-400-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+
+:root {
+  color-scheme: light dark;
+
+  /* Light palette — warm paper, ink, rust accent. All text pairs meet WCAG AA. */
+  --bg: #fbf8f3;
+  --surface: #ffffff;
+  --surface-2: #f3eee5;
+  --text: #1d1b18;
+  --text-2: #4f4a43;
+  --text-3: #6d675e;
+  --line: #e4ddd0;
+  --accent: #b03a1f;
+  --accent-hover: #8f2d16;
+  --on-accent: #ffffff;
+  --accent-soft: #f9e6df;
+  --mark: #ffe39a;
+  --code-bg: #f2ede4;
+  --shadow: 0 1px 2px rgb(40 30 10 / 6%), 0 8px 24px -12px rgb(40 30 10 / 18%);
+
+  /* Syntax highlighting */
+  --tok-comment: #7b7468; --tok-punct: #5c564d; --tok-key: #9c3a8f; --tok-str: #1c7a4d; --tok-fn: #1f5fa8; --tok-num: #b0561a;
+
+  --font-serif: "Tiro Bangla", "Noto Serif Bengali", "Kohinoor Bangla", Georgia, "Times New Roman", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", "Noto Sans Bengali", "Nirmala UI", "Kohinoor Bangla", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.4rem, 1.2rem + 0.9vw, 1.75rem);
+  --step-3: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --step-4: clamp(2.1rem, 1.5rem + 2.8vw, 3.4rem);
+
+  --w-page: 72rem;
+  --w-read: 41rem;
+  --gap: clamp(1rem, 0.6rem + 1.6vw, 2rem);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --header-h: 3.75rem;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14120f; --surface: #1c1a16; --surface-2: #25221d; --text: #efeae1; --text-2: #c4bdb0; --text-3: #9a9285;
+    --line: #342f27; --accent: #f08a6b; --accent-hover: #ffa88d; --on-accent: #1a0e09; --accent-soft: #35211a; --mark: #5a4710;
+    --code-bg: #1f1c17; --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 8px 24px -12px rgb(0 0 0 / 60%);
+    --tok-comment: #958d80; --tok-punct: #b4ac9f; --tok-key: #d68ad0; --tok-str: #7bd3a1; --tok-fn: #7fb4ee; --tok-num: #f0a46a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14120f; --surface: #1c1a16; --surface-2: #25221d; --text: #efeae1; --text-2: #c4bdb0; --text-3: #9a9285;
+  --line: #342f27; --accent: #f08a6b; --accent-hover: #ffa88d; --on-accent: #1a0e09; --accent-soft: #35211a; --mark: #5a4710;
+  --code-bg: #1f1c17; --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 8px 24px -12px rgb(0 0 0 / 60%);
+  --tok-comment: #958d80; --tok-punct: #b4ac9f; --tok-key: #d68ad0; --tok-str: #7bd3a1; --tok-fn: #7fb4ee; --tok-num: #f0a46a;
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+/* Reader-controlled text size */
+html { font-size: 100%; }
+html[data-textsize="sm"] { font-size: 93.75%; }
+html[data-textsize="lg"] { font-size: 112.5%; }
+html[data-textsize="xl"] { font-size: 125%; }

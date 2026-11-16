@@ -1,0 +1,25 @@
+{% from "components/icons.njk" import icon %}
+<!doctype html>
+<html lang="{{ site.lang }}" data-theme-pref="auto">
+<head>
+{% include "partials/head.njk" %}
+</head>
+<body>
+<a class="skip-link" href="#main">{{ t.skipToContent }}</a>
+{%- if isPost and site.features.readingProgress %}
+<div class="progress js-only" role="progressbar" aria-label="{{ t.readingProgress }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><div class="progress__bar" data-progress-bar></div></div>
+{%- endif %}
+{% include "components/header.njk" %}
+<main id="main" tabindex="-1">
+{{ content | safe }}
+</main>
+{% include "components/footer.njk" %}
+{% include "components/search-dialog.njk" %}
+{% include "partials/consent.njk" %}
+{%- if site.features.backToTop %}
+<button type="button" class="to-top js-only" data-top aria-label="{{ t.backToTop }}">{{ icon("arrowUp") }}</button>
+{%- endif %}
+<script id="app-config" type="application/json">{{ client | jsonLd | safe }}</script>
+<script type="module" src="{{ assets.js }}"></script>
+</body>
+</html>

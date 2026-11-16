@@ -1,0 +1,9 @@
+{% if site.analytics.provider == "ga4" %}
+<div class="consent js-only" data-consent role="dialog" aria-label="{{ t.cookies }}" hidden>
+  <p>{{ t.consentText }} <a href="/cookie-policy/">{{ t.cookies }}</a></p>
+  <div class="consent__actions">
+    <button type="button" class="btn btn--primary" data-consent-accept>{{ t.consentAccept }}</button>
+    <button type="button" class="btn" data-consent-decline>{{ t.consentDecline }}</button>
+  </div>
+</div>
+{% endif %}

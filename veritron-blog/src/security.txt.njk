@@ -1,0 +1,8 @@
+---
+permalink: /.well-known/security.txt
+eleventyExcludeFromCollections: true
+---
+Contact: mailto:{{ site.email }}
+Expires: {{ build.date | securityExpiry }}
+Preferred-Languages: {{ site.lang }}, en
+Canonical: {{ site.url }}/.well-known/security.txt

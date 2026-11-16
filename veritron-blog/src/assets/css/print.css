@@ -1,0 +1,18 @@
+@media print {
+  :root { --bg: #fff; --surface: #fff; --text: #000; --text-2: #222; --text-3: #444; --line: #bbb; --accent: #000; --code-bg: #f4f4f4; }
+  html { font-size: 11pt; }
+  body { background: #fff; color: #000; display: block; line-height: 1.6; }
+  .site-header, .site-footer, .progress, .to-top, .post__actions, .share, .post__aside, .toc, .pager, .related, .comments, .consent, .search, .toast, .code-copy, .heading-anchor, .skip-link, .cta, .series, .crumbs { display: none !important; }
+  .container, .post__main, .post__header, .post__hero { width: 100%; max-width: none; margin: 0; }
+  .post__layout { display: block; }
+  .prose { font-size: 11pt; }
+  .prose > p:first-child::first-letter { float: none; font-size: inherit; padding: 0; color: inherit; }
+  .prose a { color: #000; text-decoration: underline; }
+  .prose a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; word-break: break-all; }
+  .prose a[data-external]::after { content: " (" attr(href) ")"; }
+  .prose h2, .prose h3, .prose h4 { break-after: avoid; }
+  .prose img, .prose pre, .prose blockquote, .prose table, figure { break-inside: avoid; }
+  .post__hero-img { aspect-ratio: auto; max-height: 9cm; }
+  .prose pre { white-space: pre-wrap; border-color: #999; }
+  .card { box-shadow: none; }
+}

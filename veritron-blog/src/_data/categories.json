@@ -1,0 +1,17 @@
+{
+  "news":       { "bn": { "label": "সংবাদ",        "description": "বিজ্ঞান ও প্রযুক্তির সাম্প্রতিক খবর আর তার পেছনের গল্প।" }, "en": { "label": "News",       "description": "Recent science and technology news, with context." } },
+  "fact-check": { "bn": { "label": "ফ্যাক্ট চেক",   "description": "প্রচলিত ধারণা, গুজব আর দাবি যাচাই করে দেখা।" },              "en": { "label": "Fact check", "description": "Popular claims and myths, checked against evidence." } },
+  "features":   { "bn": { "label": "ফিচার",        "description": "বিস্তারিত পড়ার মতো গল্প ও বিশ্লেষণ।" },                      "en": { "label": "Features",   "description": "Longer stories and analysis." } },
+  "science":    { "bn": { "label": "বিজ্ঞান",       "description": "প্রকৃতি, জীবন আর মহাবিশ্বের রহস্য নিয়ে লেখা।" },              "en": { "label": "Science",    "description": "Writing on nature, life and the universe." } },
+  "health":     { "bn": { "label": "স্বাস্থ্য",     "description": "স্বাস্থ্য ও চিকিৎসাবিজ্ঞানের গবেষণা, সহজ ভাষায়।" },          "en": { "label": "Health",     "description": "Health and medical research in plain language." } },
+  "space":      { "bn": { "label": "মহাকাশ",       "description": "মহাকাশ গবেষণা ও জ্যোতির্বিজ্ঞানের খবর।" },                    "en": { "label": "Space",      "description": "Space exploration and astronomy." } },
+  "technology": { "bn": { "label": "প্রযুক্তি",     "description": "নতুন প্রযুক্তি, উদ্ভাবন আর তার প্রভাব।" },                    "en": { "label": "Technology", "description": "New technology, inventions and their effects." } },
+  "psychology": { "bn": { "label": "মনোবিজ্ঞান",    "description": "মন, আচরণ আর সিদ্ধান্ত নেওয়ার বিজ্ঞান।" },                    "en": { "label": "Psychology", "description": "The science of mind, behaviour and decisions." } },
+  "math":       { "bn": { "label": "গণিত",         "description": "সংখ্যা, প্যাটার্ন আর যুক্তির জগৎ।" },                          "en": { "label": "Math",       "description": "Numbers, patterns and reasoning." } },
+  "physics":    { "bn": { "label": "পদার্থবিজ্ঞান", "description": "বস্তু, শক্তি আর প্রকৃতির নিয়ম।" },                            "en": { "label": "Physics",    "description": "Matter, energy and the laws of nature." } },
+  "chemistry":  { "bn": { "label": "রসায়ন",        "description": "পদার্থের গঠন আর বিক্রিয়ার গল্প।" },                           "en": { "label": "Chemistry",  "description": "The structure and reactions of matter." } },
+  "biology":    { "bn": { "label": "জীববিজ্ঞান",    "description": "জীব ও জীবনের বিজ্ঞান।" },                                       "en": { "label": "Biology",    "description": "The science of living things." } },
+  "culture":    { "bn": { "label": "সংস্কৃতি",      "description": "সমাজ, সংস্কৃতি আর মানুষের গল্প।" },                            "en": { "label": "Culture",    "description": "Society, culture and people." } },
+  "business":   { "bn": { "label": "অর্থনীতি",      "description": "অর্থ, বাজার আর সিদ্ধান্তের হিসাব।" },                          "en": { "label": "Business",   "description": "Money, markets and decisions." } },
+  "opinion":    { "bn": { "label": "মত",           "description": "ব্যক্তিগত মতামত ও ভাবনা।" },                                     "en": { "label": "Opinion",    "description": "Personal views and thoughts." } }
+}

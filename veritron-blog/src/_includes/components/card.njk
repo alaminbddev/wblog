@@ -1,0 +1,15 @@
+{# expects `post` (an Eleventy collection item) #}
+<article class="card">
+  {%- if post.data.image %}
+  <a class="card__media" href="{{ post.url }}" tabindex="-1" aria-hidden="true"><img src="{{ post.data.image }}" alt="" width="800" height="500" loading="{{ 'eager' if eager else 'lazy' }}" decoding="async" referrerpolicy="no-referrer"></a>
+  {%- endif %}
+  <div class="card__body">
+    {%- if post.data.catLabel %}<a class="chip card__chip" href="/category/{{ post.data.catSlug }}/">{{ post.data.catLabel }}</a>{% endif %}
+    <h3 class="card__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+    <p class="card__excerpt">{{ post.data.descriptionText }}</p>
+    <div class="card__meta">
+      <time datetime="{{ post.date | dateYMD }}">{{ post.date | dateShort }}</time>
+      <span>{{ t.readingTime | fmt({ n: post.data.minutes | num }) }}</span>
+    </div>
+  </div>
+</article>

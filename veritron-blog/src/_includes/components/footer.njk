@@ -1,0 +1,46 @@
+{% set socialNames = { github: "GitHub", x: "X", facebook: "Facebook", youtube: "YouTube", mastodon: "Mastodon", bluesky: "Bluesky", linkedin: "LinkedIn" } %}
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col footer-about">
+      <a class="brand" href="/"><svg class="brand__logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="9"/><path d="M9 10.5 16 23l7-12.5"/></svg><span class="brand__name">{{ site.title }}</span></a>
+      <p>{{ site.description }}</p>
+    </div>
+    <div class="footer-col">
+      <h2>{{ t.footerPages }}</h2>
+      <ul>
+        <li><a href="/">{{ t.home }}</a></li>
+        <li><a href="/blog/">{{ t.blog }}</a></li>
+        <li><a href="/tags/">{{ t.topics }}</a></li>
+        <li><a href="/archive/">{{ t.archive }}</a></li>
+        <li><a href="/about/">{{ t.about }}</a></li>
+        <li><a href="/contact/">{{ t.contact }}</a></li>
+        <li><a href="/subscribe/">{{ t.subscribe }}</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>{{ t.footerLegal }}</h2>
+      <ul>
+        <li><a href="/privacy-policy/">{{ t.privacy }}</a></li>
+        <li><a href="/terms-and-conditions/">{{ t.terms }}</a></li>
+        <li><a href="/cookie-policy/">{{ t.cookies }}</a></li>
+        <li><a href="/disclaimer/">{{ t.disclaimer }}</a></li>
+        <li><a href="/editorial-policy/">{{ t.editorial }}</a></li>
+        <li><a href="/fact-checking-policy/">{{ t.factChecking }}</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>{{ t.footerFollow }}</h2>
+      <ul>
+        <li><a href="/feed.xml">{{ t.rss }}</a></li>
+        <li><a href="/feed.json">{{ t.jsonFeed }}</a></li>
+        {%- for key, label in socialNames %}{% if site.social[key] %}
+        <li><a href="{{ site.social[key] }}" rel="me noopener noreferrer">{{ label }}</a></li>
+        {%- endif %}{% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {{ "now" | dateYear }} {{ site.author.name }} · {{ t.rights }}</p>
+    <p>{{ t.builtWith }}{% if site.analytics.provider == "none" %} · {{ t.noTracking }}{% endif %}{% if site.analytics.provider == "ga4" %} · <button type="button" class="link-btn" data-consent-reset>{{ t.cookies }}</button>{% endif %}</p>
+  </div>
+</footer>

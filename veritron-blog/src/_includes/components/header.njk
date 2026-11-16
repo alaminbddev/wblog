@@ -1,0 +1,41 @@
+{% from "components/icons.njk" import icon %}
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="{{ site.title }} — {{ t.home }}">
+      <svg class="brand__logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="9"/><path d="M9 10.5 16 23l7-12.5"/></svg>
+      <span class="brand__name">{{ site.title }}</span>
+    </a>
+    <nav class="site-nav" aria-label="{{ t.primaryNav }}">
+      <ul class="site-nav__list">
+        {%- for item in navigation %}
+        <li><a class="site-nav__link" href="{{ item.url }}"{% if page.url | navActive(item.match) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <div class="header-actions">
+      {%- if site.features.search %}
+      <button type="button" class="search-btn js-only" data-search-open aria-keyshortcuts="Control+K Meta+K /">
+        {{ icon("search") }}<span class="search-btn__label">{{ t.search }}</span><kbd class="kbd" aria-hidden="true">/</kbd>
+      </button>
+      {%- endif %}
+      {%- if site.features.savedPosts %}
+      <a class="icon-btn js-only" href="/saved/" aria-label="{{ t.saved }}" title="{{ t.saved }}">{{ icon("bookmark") }}<span class="badge" data-saved-count hidden></span></a>
+      {%- endif %}
+      <a class="icon-btn" href="/feed.xml" aria-label="{{ t.rss }}" title="{{ t.rss }}">{{ icon("rss") }}</a>
+      {%- if site.features.themeToggle %}
+      <button type="button" class="icon-btn js-only" data-theme-toggle aria-label="{{ t.themeToggle }}" title="{{ t.themeToggle }}">
+        {{ icon("contrast", "theme-ico theme-ico--auto") }}{{ icon("sun", "theme-ico theme-ico--light") }}{{ icon("moon", "theme-ico theme-ico--dark") }}
+      </button>
+      {%- endif %}
+      <details class="nav-menu" data-nav-menu>
+        <summary class="icon-btn" aria-label="{{ t.menu }}">{{ icon("menu") }}</summary>
+        <div class="nav-menu__panel">
+          {%- for item in navigation %}
+          <a href="{{ item.url }}"{% if page.url | navActive(item.match) %} aria-current="page"{% endif %}>{{ item.label }}</a>
+          {%- endfor %}
+          <a href="/subscribe/">{{ t.subscribe }}</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

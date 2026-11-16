@@ -1,0 +1,11 @@
+---
+layout: layouts/page.njk
+permalink: /offline/
+noindex: true
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ t.offlineTitle }}"
+  lead: "{{ t.offlineText }}"
+---
+<ul data-offline-list></ul>
+<p><a class="btn" href="/">{{ t.goHome }}</a></p>

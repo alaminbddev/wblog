@@ -1,0 +1,66 @@
+{
+  "title": "Veritron",
+  "tagline": "বিজ্ঞান, প্রযুক্তি আর কৌতূহলের ব্যক্তিগত নোটবুক",
+  "description": "বিজ্ঞান, প্রযুক্তি আর দৈনন্দিন কৌতূহল নিয়ে ব্যক্তিগত লেখা ও নোট।",
+  "url": "https://www.biggandaily.pro.bd",
+  "lang": "bn",
+  "locale": "bn-BD",
+  "timezone": "Asia/Dhaka",
+  "established": 2026,
+  "email": "veritronbd@gmail.com",
+
+  "author": {
+    "name": "Veritron",
+    "bio": "আমি বিজ্ঞান, প্রযুক্তি আর অদ্ভুত সব তথ্য নিয়ে লিখি। এই ব্লগ আমার নিজের কৌতূহলের ডায়েরি—যা পড়ি, যা শিখি, যা যাচাই করি, এখানে লিখে রাখি।",
+    "avatar": "/images/favicon/android-chrome-192x192.png",
+    "location": ""
+  },
+
+  "social": {
+    "github": "",
+    "x": "",
+    "facebook": "",
+    "youtube": "",
+    "mastodon": "",
+    "bluesky": "",
+    "linkedin": ""
+  },
+
+  "postsPerPage": 9,
+  "homeLatestCount": 7,
+
+  "features": {
+    "search": true,
+    "themeToggle": true,
+    "readingProgress": true,
+    "toc": true,
+    "relatedPosts": true,
+    "share": true,
+    "savedPosts": true,
+    "textSize": true,
+    "backToTop": true,
+    "lightbox": true,
+    "pwa": true
+  },
+
+  "analytics": {
+    "_comment": "provider: none | ga4 | plausible | umami. 'none' = no tracking, no cookies, no consent banner needed.",
+    "provider": "none",
+    "ga4Id": "G-FZYJQK9BZW",
+    "plausibleDomain": "",
+    "plausibleSrc": "https://plausible.io/js/script.js",
+    "umamiId": "",
+    "umamiSrc": "https://cloud.umami.is/script.js"
+  },
+
+  "comments": {
+    "_comment": "provider: none | giscus (GitHub Discussions). Fill repo/repoId/category/categoryId from https://giscus.app",
+    "provider": "none",
+    "giscus": { "repo": "", "repoId": "", "category": "", "categoryId": "" }
+  },
+
+  "security": {
+    "hsts": "max-age=31536000; includeSubDomains",
+    "extraImgHosts": []
+  }
+}

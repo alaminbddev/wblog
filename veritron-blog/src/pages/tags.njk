@@ -1,0 +1,19 @@
+---
+layout: layouts/page.njk
+title: "{{ t.topics }}"
+permalink: /tags/
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ t.topics }}"
+  lead: "{{ t.browseTopics }}"
+---
+<h2>{{ t.inCategory }}</h2>
+<ul class="topic-cloud">
+  {%- for c in collections.categories %}<li><a href="{{ c.url }}">{{ c.label }} <small>{{ c.count | num }}</small></a></li>{% endfor %}
+</ul>
+{% if collections.tagList.length %}
+<h2>{{ t.topics }}</h2>
+<ul class="topic-cloud">
+  {%- for tg in collections.tagList %}<li><a href="{{ tg.url }}">#{{ tg.name }} <small>{{ tg.count | num }}</small></a></li>{% endfor %}
+</ul>
+{% endif %}
