@@ -19,7 +19,7 @@
   color-scheme: light dark;
 
   /* Light palette — warm paper, ink, rust accent. All text pairs meet WCAG AA. */
-  --bg: #fbf8f3;
+  --bg: #f8f8f8;
   --surface: #ffffff;
   --surface-2: #f3eee5;
   --text: #1d1b18;
